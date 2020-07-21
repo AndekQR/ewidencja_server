@@ -4,6 +4,11 @@
       "name": "jwt",
       "type": "com.example.ewidencja.security.jwt.JwtProperties",
       "sourceType": "com.example.ewidencja.security.jwt.JwtProperties"
+    },
+    {
+      "name": "token",
+      "type": "com.example.ewidencja.security.jwt.JwtRefreshTokenProvider",
+      "sourceType": "com.example.ewidencja.security.jwt.JwtRefreshTokenProvider"
     }
   ],
   "properties": [

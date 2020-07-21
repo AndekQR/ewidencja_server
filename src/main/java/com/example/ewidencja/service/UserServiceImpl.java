@@ -1,7 +1,6 @@
 package com.example.ewidencja.service;
 
 import com.example.ewidencja.helper.AuthorityType;
-import com.example.ewidencja.model.Event;
 import com.example.ewidencja.model.User;
 import com.example.ewidencja.repository.UserRepository;
 import com.example.ewidencja.security.MyPasswordEncoder;
@@ -10,15 +9,14 @@ import com.example.ewidencja.service.interfaces.UserService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
-    private MyPasswordEncoder passwordEncoder;
-    private AuthorityService authorityService;
+    private final UserRepository userRepository;
+    private final MyPasswordEncoder passwordEncoder;
+    private final AuthorityService authorityService;
 
     public UserServiceImpl(UserRepository userRepository, MyPasswordEncoder passwordEncoder, AuthorityService authorityService) {
         this.userRepository=userRepository;
@@ -48,6 +46,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    //no usages
     @Override
     public User update(User user) {
         User userToUpdate = userRepository.findById(user.getId()).orElseThrow(() -> new UsernameNotFoundException("User not found"));

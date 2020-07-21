@@ -2,13 +2,11 @@ package com.example.ewidencja.controller;
 
 import com.example.ewidencja.model.Event;
 import com.example.ewidencja.service.interfaces.EventService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @RestController

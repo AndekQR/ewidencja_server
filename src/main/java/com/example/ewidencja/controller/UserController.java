@@ -19,4 +19,6 @@ public class UserController {
         model.put("roles", userDetails.getAuthorities());
         return ResponseEntity.ok(model);
     }
+
+
 }

@@ -1,18 +1,24 @@
 package com.example.ewidencja.model;
 
 import com.example.ewidencja.helper.AuthorityType;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name="AUTHORITIES")
+@ToString
 public class Authority implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Setter
+    @Getter
     @Enumerated(EnumType.STRING)
     private AuthorityType authorityType;
 
@@ -21,19 +27,4 @@ public class Authority implements Serializable {
         this.authorityType=authorityType;
     }
 
-    public AuthorityType getAuthorityType() {
-        return authorityType;
-    }
-
-    public void setAuthorityType(AuthorityType authorityType) {
-        this.authorityType=authorityType;
-    }
-
-    @Override
-    public String toString() {
-        return "Authority{" +
-                "id=" + id +
-                ", authorityType=" + authorityType +
-                '}';
-    }
 }

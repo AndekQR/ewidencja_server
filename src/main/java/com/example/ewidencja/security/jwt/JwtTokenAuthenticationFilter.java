@@ -1,5 +1,7 @@
 package com.example.ewidencja.security.jwt;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
@@ -19,6 +21,8 @@ public class JwtTokenAuthenticationFilter extends GenericFilterBean {
     public JwtTokenAuthenticationFilter(JwtTokenProvider jwtTokenProvider) {
         this.jwtTokenProvider=jwtTokenProvider;
     }
+
+    private Logger logger = LoggerFactory.getLogger(JwtTokenAuthenticationFilter.class);
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {

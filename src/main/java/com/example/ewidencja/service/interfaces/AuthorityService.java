@@ -3,7 +3,6 @@ package com.example.ewidencja.service.interfaces;
 import com.example.ewidencja.helper.AuthorityType;
 import com.example.ewidencja.model.Authority;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 public interface AuthorityService {

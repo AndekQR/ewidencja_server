@@ -7,7 +7,6 @@ import com.example.ewidencja.service.interfaces.EventService;
 import com.example.ewidencja.service.interfaces.UserService;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -30,13 +29,10 @@ public class EventServiceImpl implements EventService {
 
     public Event save(Event event, String username) {
         User user = this.userService.getUser(username);
-//        event.setUsers(user);
-//        return eventRepository.save(event);
-        List<Event> newEvents = user.getEvents();
-        event.setUsers(user);
-        newEvents.add(event);
-        user.setEvents(newEvents);
-        userService.update(user);
-        return event;
+
+        event.setUser(user);
+        user.getEvents().add(event);
+
+        return eventRepository.save(event);
     }
 }

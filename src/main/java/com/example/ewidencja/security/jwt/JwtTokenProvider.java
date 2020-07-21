@@ -7,7 +7,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
-import sun.awt.CharsetString;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +17,8 @@ import java.util.List;
 @Component
 public class JwtTokenProvider {
 
-    private JwtProperties jwtProperties;
-    private UserDetailsService userDetailsService;
+    private final JwtProperties jwtProperties;
+    private final UserDetailsService userDetailsService;
     private String secretKey;
 
     public JwtTokenProvider(JwtProperties jwtProperties, @Qualifier("myUserDetailsService") UserDetailsService userDetailsService) {
@@ -64,6 +63,11 @@ public class JwtTokenProvider {
         return null;
     }
 
+    public Date getExpirationDate(String token) {
+        Jws<Claims> claim = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
+        return claim.getBody().getExpiration();
+    }
+
     public Boolean validateToken(String token) throws InvalidJwtAuthenticationException {
         try {
             Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
@@ -72,4 +76,5 @@ public class JwtTokenProvider {
             throw new InvalidJwtAuthenticationException("Expired or invalid JWT token");
         }
     }
+
 }

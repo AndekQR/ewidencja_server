@@ -1,6 +1,5 @@
 package com.example.ewidencja.service.interfaces;
 
-import com.example.ewidencja.model.Event;
 import com.example.ewidencja.model.User;
 
 import java.util.Optional;
