@@ -32,6 +32,11 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         return asResponseEntity(exception.getMessage(), "Expired or invalid JWT token", HttpStatus.UNAUTHORIZED);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorResponse> handleIllegalArgumentException(IllegalArgumentException exception, WebRequest request) {
+        return asResponseEntity(exception.getMessage(), "Invalid argument", HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(UsernameNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleInvalidJwtAuthentication(UsernameNotFoundException exception, WebRequest request) {
         return asResponseEntity(exception.getMessage(), "This user is not registered", HttpStatus.NOT_FOUND);

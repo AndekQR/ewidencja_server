@@ -16,6 +16,7 @@ import java.time.LocalDate;
 public class Event {
 
     @Id
+    @Getter
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
@@ -49,7 +50,7 @@ public class Event {
     private User user;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    public User getUsers() {
+    public User getUser() {
         return user;
     }
 

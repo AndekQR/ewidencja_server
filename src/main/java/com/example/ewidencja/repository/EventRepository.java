@@ -16,4 +16,5 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     Optional<List<Event>> findAllByDateBefore(LocalDate date);
     Optional<List<Event>> findAllByDateAfter(LocalDate date);
     Optional<List<Event>> findByUser(User user);
+    List<Event> deleteAllByUser(User user);
 }

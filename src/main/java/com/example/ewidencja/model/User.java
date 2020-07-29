@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 public class User implements UserDetails, Serializable {
 
     @Id
+    @Getter
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
@@ -123,8 +124,8 @@ public class User implements UserDetails, Serializable {
         return event;
     }
 
-    @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
-    public Long getId() {
-        return id;
-    }
+//    @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
+//    public Long getId() {
+//        return id;
+//    }
 }
